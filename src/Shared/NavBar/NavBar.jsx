@@ -55,7 +55,7 @@ const NavBar = () => {
           </div>
         </div>
         <button className=" px-8 py-2 bg-[#403F3F] text-white text-xl font-semibold">
-          <NavLink>Login</NavLink>
+          <NavLink to={'/login'}>Login</NavLink>
         </button>
       </div>
     </div>
