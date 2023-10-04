@@ -1,7 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../../Shared/NavBar/NavBar";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
+  const {signInUser} = useContext(AuthContext)
+  const location = useLocation();
+  const navigate = useNavigate()
+  console.log('Location in the login page', location);
+  const handelLogin = e =>{
+    e.preventDefault()
+    const form = new FormData(e.currentTarget)
+    const email = form.get('email');
+    const password = form.get('password')
+    signInUser(email, password)
+    .then( () => {
+      navigate(location?.state ? location.state : '/')
+    })
+    .catch(error => console.log(error))
+    console.log(email, password)
+  }
   return (
     <div className="">
       <NavBar></NavBar>
@@ -11,7 +29,9 @@ const Login = () => {
         </h1>
 
         <hr />
-        <form className="card-body">
+        <form 
+        onSubmit={handelLogin}
+        className="card-body">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>

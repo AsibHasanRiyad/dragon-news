@@ -17,14 +17,14 @@ const LeftSideNav = () => {
   }, []);
 //   console.log(news);
   return (
-    <div>
+    <div className=" text-center lg:text-start">
       {/* Categories */}
       <div className=" text-xl">
-        <h1 className=" font-semibold mb-2">All Category </h1>
+        <h1 className=" font-semibold mb-2 text-center lg:text-start">All Category </h1>
         <div className="">
           {categories.map((category) => (
             <NavLink
-              className="block text-[#9F9F9F] font-medium pl-10 py-4 rounded-md hover:bg-[#E7E7E7] hover:text-[#403F3F] "
+              className="block text-[#9F9F9F] font-medium pl-0 lg:pl-8 py-4 rounded-md hover:bg-[#E7E7E7] hover:text-[#403F3F] "
               to={`/category/${category.id}`}
               key={category.id}
             >

@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { FaBookmark, FaShareAlt, FaEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const HomeNew = ({ homeNews }) => {
-  const { author, title, details, rating, total_view, image_url } = homeNews;
+  const { author, title, details, rating, total_view, image_url, _id } = homeNews;
   return (
     <div className=" ">
       <div className="card bg-base-100">
@@ -32,7 +33,9 @@ const HomeNew = ({ homeNews }) => {
           <img src={image_url} alt="Shoes" />
         </figure>
         <div className="card-body">
-          <p className=" text-[#706F6F] text-sm">{details}</p>
+          {
+            details.length > 300 ? <p className=" text-[#706F6F] text-sm">{details.slice(0,300)} <span className=" text-rose-500 font-semibold underline"><Link to={`/news/${_id}`}>Read More...</Link></span> </p> : <p className=" text-[#706F6F] text-sm">{details}</p>
+          }
           <hr />
           <div className="card-actions justify-between text-[#706F6F] items-center">
             

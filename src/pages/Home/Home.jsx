@@ -21,7 +21,7 @@ const Home = () => {
             <Latest></Latest>
             <NavBar></NavBar>
 
-            <div className=" grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className=" grid grid-cols-1 lg:grid-cols-4 gap-0 mx-0 md:mx-20 lg:mx-0 lg:gap-6">
                 <div className=" col-span-1">
                     <LeftSideNav></LeftSideNav>
                 </div>
@@ -30,7 +30,7 @@ const Home = () => {
                         news.slice(18,21).map(homeNews => <HomeNew key={homeNews._id} homeNews={homeNews}></HomeNew> )
                     }
                 </div>
-                <div className=" col-span-1">
+                <div className=" col-span-1 ">
                     <RightSideNav></RightSideNav>
                 </div>
             </div>

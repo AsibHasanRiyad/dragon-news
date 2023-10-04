@@ -1,7 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import NavBar from "../../Shared/NavBar/NavBar";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
+    const {createUser} = useContext(AuthContext)
     const handelRegister = e =>{
         e.preventDefault()
         const form = new FormData(e.currentTarget);
@@ -11,6 +15,11 @@ const Register = () => {
         const name = form.get('name')
         const photo = form.get('photo')
         console.log(email, password, name, photo);
+
+        //create user
+        createUser(email, password)
+        .then(result =>console.log(result.user))
+        .catch(error => console.log(error.message))
     }
   return (
     <div>
