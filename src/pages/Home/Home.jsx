@@ -1,20 +1,27 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Header from "../../Shared/Header/Header";
 import LeftSideNav from "../../Shared/LeftSidenav/LeftSideNav";
 import NavBar from "../../Shared/NavBar/NavBar";
 import RightSideNav from "../../Shared/RightSideNav/RightSideNav";
 import Latest from "./Latest";
 import HomeNew from "../../components/HomeNew";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 
 const Home = () => {
+    const {loading} = useContext(AuthContext)
     const [news, setNews] = useState([]);
     useEffect(() => {
         fetch("news.json")
           .then((res) => res.json())
           .then((data) => setNews(data));
       }, []);
+      if (loading) {
+        return <div className=" h-screen flex justify-center items-center">
+            <span className="loading loading-spinner loading-lg"></span>
+        </div>
+    }
     return (
         <div className="">
             <Header></Header>
